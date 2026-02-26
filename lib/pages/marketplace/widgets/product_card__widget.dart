@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../../models/product_model.dart';
 
@@ -21,7 +22,13 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _increment,
+      onLongPress: () {
+        // 1. Vibration légère (Sensation "soft")
+        HapticFeedback.mediumImpact();
+
+        // 2. Logique d'ajout au panier (via un Provider ou ton state)
+        _increment();
+      },
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -141,7 +148,7 @@ class _ProductCardWidgetState extends State<ProductCardWidget> {
               ),
               child: Text(
                 "-20%", // Tu peux calculer cela via (price - promoPrice)
-                style: const TextStyle(
+                style: Theme.of(context).textTheme.labelSmall!.copyWith(
                   color: Colors.white,
                   fontSize: 10,
                   fontWeight: FontWeight.bold,

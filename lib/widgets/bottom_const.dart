@@ -24,6 +24,10 @@ class bottomConst {
       "screen": BoutiqueScreen(),
       "label": "Home",
     },
+    // {
+    //   'icon': Image.asset("assets/icons/panier.png", width: 28, height: 28),
+    //   'is_center': true, // marque le bouton flottant central
+    // },
     {
       'icon': Image.asset("assets/icons/user1.png", width: 21, height: 21),
       'active_icon': Image.asset(

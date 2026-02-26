@@ -15,7 +15,7 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: const Color(0xFFFDF8F3), // Fond beige très léger
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(title: "Product", showMenu: true),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(

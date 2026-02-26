@@ -63,7 +63,7 @@ class BoutiqueScreen extends StatelessWidget {
                   const SizedBox(height: 15),
                   _buildFilterBar(),
                   const SizedBox(height: 15),
-                  _buildPromoBanner(),
+                  _buildPromoBanner(context),
                   const SizedBox(height: 10),
                 ],
               ),
@@ -89,8 +89,6 @@ class BoutiqueScreen extends StatelessWidget {
       ),
     );
   }
-
-  // --- LES MÉTHODES RÉPARÉES ---
 
   Widget _buildTopActions(BuildContext context) {
     return Padding(
@@ -234,7 +232,7 @@ class BoutiqueScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPromoBanner() {
+  Widget _buildPromoBanner(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
       width: double.infinity,
@@ -262,13 +260,15 @@ class BoutiqueScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
+                Text(
                   "Soldes d'Été",
-                  style: TextStyle(color: Colors.white70),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.labelSmall!.copyWith(color: Colors.white70),
                 ),
-                const Text(
+                Text(
                   "Jusqu'à -50%",
-                  style: TextStyle(
+                  style: Theme.of(context).textTheme.labelSmall!.copyWith(
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -284,9 +284,9 @@ class BoutiqueScreen extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: const Text(
+                  child: Text(
                     "Profiter",
-                    style: TextStyle(
+                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
                       color: Color(0xFF311B92),
                       fontWeight: FontWeight.bold,
                       fontSize: 12,

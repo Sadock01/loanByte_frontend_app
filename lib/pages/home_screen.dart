@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pal_marketplace/pages/cart/screen/cart_screen.dart';
 
 import '../widgets/bottom_const.dart';
 
@@ -21,6 +22,38 @@ class _HomePageState extends State<HomeMobileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: bottomConst.bottomList[_currentIndex]['screen'],
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const CartScreen()),
+          );
+        },
+        child: Container(
+          width: 65,
+          height: 65,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: const Color(0xFF311B92), // Ton violet signature
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFF311B92).withOpacity(0.3),
+                blurRadius: 12,
+                offset: const Offset(0, 6),
+              ),
+            ],
+          ),
+          child: Center(
+            child: Image.asset(
+              "assets/icons/panier.png",
+              width: 28,
+              height: 28,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -47,6 +80,7 @@ class _HomePageState extends State<HomeMobileScreen> {
               return GestureDetector(
                 onTap: () => _onItemTapped(index),
                 child: Container(
+                  margin: EdgeInsets.only(bottom: 35),
                   width: 55,
                   height: 55,
                   decoration: BoxDecoration(
@@ -58,7 +92,7 @@ class _HomePageState extends State<HomeMobileScreen> {
                   ),
                   child: Center(
                     child: Image.asset(
-                      "assets/images/panier.png",
+                      "assets/icons/panier.png",
                       width: 24,
                       height: 24,
                       color: isActive ? Colors.white : Colors.black,
